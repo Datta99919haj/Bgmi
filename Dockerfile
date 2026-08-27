@@ -7,7 +7,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy your code
-COPY gitlab.py .
+COPY flames.py .
 
 # Run
 CMD ["python", "flames.py"]
