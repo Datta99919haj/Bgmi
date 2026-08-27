@@ -1,1 +1,1 @@
-worker: python gitlab.py
+worker: python flames.py
