@@ -18,7 +18,7 @@ BOT_START_TIME = datetime.now()
 
 # 🤖 FILL YOUR DETAILS HERE
 
-BOT_TOKEN = "8838142953:AAFy7W6TCED7o8mzICYOm2ZHgC9IkBGqYy4"  # Telegram Bot Token
+BOT_TOKEN = "8838142953:AAESI8o5xfovTVMVNL_m_cLep4cKM8xHhyg"  # Telegram Bot Token
 
 BOT_OWNER = [1725783398]  # Owner IDs (list)
 
