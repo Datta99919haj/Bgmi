@@ -16,6 +16,9 @@ import json
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 import queue
+import logging
+
+log = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
