@@ -1,0 +1,44 @@
+name: Run Bot 24x7
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Har 6 ghante baad restart
+  workflow_dispatch:      # Manual start ke liye
+
+concurrency:
+  group: telegram-bot
+  cancel-in-progress: false
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355    # 6 ghante se thoda kam (GitHub max 360 deta hai)
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: System Update (apt update & upgrade)
+        run: |
+          sudo apt-get update
+          sudo apt-get upgrade -y
+          # Agar tesseract ki zaroorat ho toh ye bhi install ho jayega
+          sudo apt-get install -y tesseract-ocr
+          
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Run Bot
+        run: |
+          # 6 ghante se pehle crash hone par restart karne ka loop
+          for i in {1..10}; do
+            timeout 21000 python app.py || echo "Bot crashed, restarting in 5 seconds..."
+            sleep 5
+          done
