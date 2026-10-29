@@ -2,7 +2,7 @@ name: Run Telegram Bot 24x7
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Har 6 ghante baad run hoga
+    - cron: '0 */5 * * *'  # Har 6 ghante baad run hoga
   workflow_dispatch: {}      # Manually start karne ke liye button
 
 concurrency:
